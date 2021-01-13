@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "image-picker-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/imagePicker/ImagePickerWebPart.js",
+          "manifest": "./src/webparts/imagePicker/ImagePickerWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "ImagePickerWebPartStrings": "lib/webparts/imagePicker/loc/{locale}.js"
+  }
+}
