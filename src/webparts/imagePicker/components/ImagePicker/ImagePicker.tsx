@@ -1,22 +1,55 @@
 import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Panel } from 'office-ui-fabric-react/lib/Panel';
+import { sp } from "@pnp/sp";
+import "@pnp/sp/webs";
+import "@pnp/sp/lists";
+import "@pnp/sp/items";
 
-interface IImagePicker {
-
+interface IImagePickerProps {
+    sharepointLibrary? : string;
+    selectedText? : string;
+    buttonText: string;
+    panelHeaderText?: string;
 }
 
-export default class ImagePicker extends React.Component<IImagePicker, { isOpen, imageSelected }> {
+interface IImagePickerState {
+    isOpen : boolean;
+    imageSelected : string;
+    imagesToDisplay : string[];
+}
 
-    constructor(props: IImagePicker) {
+export default class ImagePicker extends React.Component<IImagePickerProps, IImagePickerState> {
+
+    constructor(props: IImagePickerProps) {
         super(props);
         this.state = {
             isOpen: false,
-            imageSelected: ""
+            imageSelected: "",
+            imagesToDisplay : []
         };
-
+        if(this.props.sharepointLibrary != "")
+        {
+            this.getImagesFromLibrary();
+        }
+        else
+        {
+            this.setState({imagesToDisplay:
+                ["https://picsum.photos/200/300?random=1",
+                "https://picsum.photos/200/300?random=2",
+                "https://picsum.photos/200/300?random=3"]});
+        }
     }
 
+    /*SHAREPOINT METHODS*/
+    private getImagesFromLibrary = () => {
+        sp.web.lists.getByTitle(this.props.sharepointLibrary).items.get()
+        .then((items)=>{
+            console.log(items);
+        });
+    } 
+
+    /*PANEL METHODS*/
     private openPanel = () => {
         this.setState({ isOpen: true });
     }
@@ -25,6 +58,7 @@ export default class ImagePicker extends React.Component<IImagePicker, { isOpen,
         this.setState({ isOpen: false });
     }
 
+    /*CLICK HANDLER*/
     private selectImage = (e) => {
         e.preventDefault();
         this.setState({ imageSelected: e.target.src, isOpen: false });
@@ -33,9 +67,9 @@ export default class ImagePicker extends React.Component<IImagePicker, { isOpen,
     public render(): React.ReactElement<any> {
         return (
             <div>
-                <DefaultButton text="Open panel" onClick={this.openPanel} />
+                <DefaultButton text={this.props.buttonText} onClick={this.openPanel} />
                 <Panel
-                    headerText="Sample panel"
+                    headerText={this.props.panelHeaderText}
                     isOpen={this.state.isOpen}
                     onDismiss={this.dismissPanel}
                     // You MUST provide this prop! Otherwise screen readers will just say "button" with no label.
@@ -56,7 +90,7 @@ export default class ImagePicker extends React.Component<IImagePicker, { isOpen,
                 </Panel>
                 {this.state.imageSelected === "" ? <div></div> :
                     <div>
-                        <span>You selected the following Image: </span>
+                        <span>{this.props.selectedText}</span>
                         <div>
                             <img width="200px" src={this.state.imageSelected}></img>
                         </div>

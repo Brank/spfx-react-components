@@ -8,7 +8,11 @@ export default class ImagePickerWebpart extends React.Component<IImagePickerWebp
   public render(): React.ReactElement<IImagePickerWebpartProps> {
     return (
       <div className={ styles.imagePicker }>
-        <ImagePicker />
+        <ImagePicker buttonText="Click to select an Image"
+         panelHeaderText="Select an Image" 
+         selectedText="You have selected: "
+         sharepointLibrary="Ultimos Documentos Imagenes"
+         />
       </div>
     );
   }
