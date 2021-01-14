@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Panel } from 'office-ui-fabric-react/lib/Panel';
 import { sp } from "@pnp/sp";
@@ -7,16 +8,17 @@ import "@pnp/sp/lists";
 import "@pnp/sp/items";
 
 interface IImagePickerProps {
-    sharepointLibrary? : string;
-    selectedText? : string;
+    sharepointLibrary?: string;
+    selectedText?: string;
     buttonText: string;
     panelHeaderText?: string;
 }
 
 interface IImagePickerState {
-    isOpen : boolean;
-    imageSelected : string;
-    imagesToDisplay : string[];
+    isOpen: boolean;
+    imageSelected: string;
+    imagesToDisplay: string[];
+    loading: boolean;
 }
 
 export default class ImagePicker extends React.Component<IImagePickerProps, IImagePickerState> {
@@ -26,32 +28,32 @@ export default class ImagePicker extends React.Component<IImagePickerProps, IIma
         this.state = {
             isOpen: false,
             imageSelected: "",
-            imagesToDisplay : []
+            imagesToDisplay:  ["https://picsum.photos/200/300?random=1",
+            "https://picsum.photos/200/300?random=2",
+            "https://picsum.photos/200/300?random=3"],
+            loading: false
         };
-        if(this.props.sharepointLibrary != "")
-        {
-            this.getImagesFromLibrary();
-        }
-        else
-        {
-            this.setState({imagesToDisplay:
-                ["https://picsum.photos/200/300?random=1",
-                "https://picsum.photos/200/300?random=2",
-                "https://picsum.photos/200/300?random=3"]});
-        }
     }
 
     /*SHAREPOINT METHODS*/
     private getImagesFromLibrary = () => {
-        sp.web.lists.getByTitle(this.props.sharepointLibrary).items.get()
-        .then((items)=>{
-            console.log(items);
-        });
-    } 
+        sp.web.lists.getByTitle(this.props.sharepointLibrary).items.select("FileRef").get()
+            .then((images) => {
+                var imagesURL = [];
+                images.forEach(imageItem => {
+                    imagesURL.push(imageItem.FileRef);
+                })
+                this.setState({ imagesToDisplay: imagesURL, loading:false });
+            });
+    }
 
     /*PANEL METHODS*/
     private openPanel = () => {
-        this.setState({ isOpen: true });
+        this.setState({ isOpen: true, loading:true });
+
+        if (this.props.sharepointLibrary != "") {
+            this.getImagesFromLibrary();
+        }
     }
 
     private dismissPanel = () => {
@@ -75,18 +77,14 @@ export default class ImagePicker extends React.Component<IImagePickerProps, IIma
                     // You MUST provide this prop! Otherwise screen readers will just say "button" with no label.
                     closeButtonAriaLabel="Close"
                 >
+                    {this.state.loading ? <Spinner size={SpinnerSize.large} />: 
                     <ul>
-                        <li>
-                            <img width="200px" onClick={this.selectImage} src="https://picsum.photos/200/300?random=1" />
-                        </li>
-                        <li>
-                            <img width="200px" onClick={this.selectImage} src="https://picsum.photos/200/300?random=2" />
-                        </li>
-                        <li>
-                            <img width="200px" onClick={this.selectImage} src="https://picsum.photos/200/300?random=3" />
-                        </li>
-                    </ul>
-
+                        {this.state.imagesToDisplay.map((image) => {
+                            return (<li>
+                                <img width="200px" onClick={this.selectImage} src={image} />
+                            </li>)
+                        })}
+                    </ul>}
                 </Panel>
                 {this.state.imageSelected === "" ? <div></div> :
                     <div>

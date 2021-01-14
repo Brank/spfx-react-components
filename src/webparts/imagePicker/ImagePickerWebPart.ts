@@ -10,6 +10,8 @@ import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import * as strings from 'ImagePickerWebPartStrings';
 import ImagePickerWebpart from './components/ImagePickerWebpart';
 import { IImagePickerWebpartProps } from './components/IImagePickerWebpartProps';
+import { setup as pnpSetup } from "@pnp/common";
+
 
 export interface IImagePickerWebPartProps {
   description: string;
@@ -26,6 +28,15 @@ export default class ImagePickerWebPart extends BaseClientSideWebPart <IImagePic
     );
 
     ReactDom.render(element, this.domElement);
+  }
+
+  protected onInit(): Promise<void> {
+
+    return super.onInit().then(_ => {
+      pnpSetup({
+        spfxContext: this.context
+      });
+    });
   }
 
   protected onDispose(): void {
