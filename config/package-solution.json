@@ -1,13 +1,40 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
-    "name": "react-components-client-side-solution",
-    "id": "7042268e-18b6-484e-a96a-60695081a51c",
+    "name": "spfx-react-components-client-side-solution",
+    "id": "7c578b78-5314-499d-9495-ed8492ea068b",
     "version": "1.0.0.0",
     "includeClientSideAssets": true,
-    "isDomainIsolated": false
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.15.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "spfx-react-components description"
+      },
+      "longDescription": {
+        "default": "spfx-react-components description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "spfx-react-components Feature",
+        "description": "The feature that activates elements of the spfx-react-components solution.",
+        "id": "56748b0b-00b4-4715-aac5-a6b37b1ea498",
+        "version": "1.0.0.0"
+      }
+    ]
   },
   "paths": {
-    "zippedPackage": "solution/react-components.sppkg"
+    "zippedPackage": "solution/spfx-react-components.sppkg"
   }
 }

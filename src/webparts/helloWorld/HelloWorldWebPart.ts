@@ -8,29 +8,28 @@ import {
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
 
-import * as strings from 'ImagePickerWebPartStrings';
-import ImagePicker from './components/ImagePicker';
-import { IImagePickerProps } from './components/IImagePickerProps';
+import * as strings from 'HelloWorldWebPartStrings';
+import HelloWorld from './components/HelloWorld';
+import { IHelloWorldProps } from './components/IHelloWorldProps';
 
-export interface IImagePickerWebPartProps {
+export interface IHelloWorldWebPartProps {
   description: string;
 }
 
-export default class ImagePickerWebPart extends BaseClientSideWebPart<IImagePickerWebPartProps> {
+export default class HelloWorldWebPart extends BaseClientSideWebPart<IHelloWorldWebPartProps> {
 
   private _isDarkTheme: boolean = false;
   private _environmentMessage: string = '';
 
   public render(): void {
-    const element: React.ReactElement<IImagePickerProps> = React.createElement(
-      ImagePicker,
+    const element: React.ReactElement<IHelloWorldProps> = React.createElement(
+      HelloWorld,
       {
         description: this.properties.description,
         isDarkTheme: this._isDarkTheme,
         environmentMessage: this._environmentMessage,
         hasTeamsContext: !!this.context.sdks.microsoftTeams,
-        userDisplayName: this.context.pageContext.user.displayName,
-        context: this.context
+        userDisplayName: this.context.pageContext.user.displayName
       }
     );
 

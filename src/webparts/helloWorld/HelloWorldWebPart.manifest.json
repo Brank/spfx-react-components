@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
-  "id": "a0303af0-71e0-43d2-af02-b0a310be6cc9",
-  "alias": "ImagePickerWebPart",
+  "id": "9a230396-1e7f-4a11-bc76-81de0ea1d653",
+  "alias": "HelloWorldWebPart",
   "componentType": "WebPart",
 
   // The "*" signifies that the version should be taken from the package.json
@@ -18,11 +18,11 @@
   "preconfiguredEntries": [{
     "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
     "group": { "default": "Other" },
-    "title": { "default": "imagePicker" },
-    "description": { "default": "imagePicker description" },
+    "title": { "default": "HelloWorld" },
+    "description": { "default": "HelloWorld description" },
     "officeFabricIconFontName": "Page",
     "properties": {
-      "description": "imagePicker"
+      "description": "HelloWorld"
     }
   }]
 }

@@ -1,4 +1,4 @@
-declare interface IImagePickerWebPartStrings {
+declare interface IHelloWorldWebPartStrings {
   PropertyPaneDescription: string;
   BasicGroupName: string;
   DescriptionFieldLabel: string;
@@ -8,7 +8,7 @@ declare interface IImagePickerWebPartStrings {
   AppTeamsTabEnvironment: string;
 }
 
-declare module 'ImagePickerWebPartStrings' {
-  const strings: IImagePickerWebPartStrings;
+declare module 'HelloWorldWebPartStrings' {
+  const strings: IHelloWorldWebPartStrings;
   export = strings;
 }

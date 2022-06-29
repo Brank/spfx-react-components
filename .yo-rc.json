@@ -1,11 +1,15 @@
 {
   "@microsoft/generator-sharepoint": {
-    "isCreatingSolution": true,
+    "plusBeta": false,
+    "isCreatingSolution": false,
+    "version": "1.15.0",
+    "libraryName": "spfx-react-components",
+    "libraryId": "7c578b78-5314-499d-9495-ed8492ea068b",
     "environment": "spo",
-    "version": "1.10.0",
-    "libraryName": "react-components",
-    "libraryId": "7042268e-18b6-484e-a96a-60695081a51c",
     "packageManager": "npm",
+    "solutionName": "spfx-react-components",
+    "solutionShortDescription": "spfx-react-components description",
+    "skipFeatureDeployment": true,
     "isDomainIsolated": false,
     "componentType": "webpart"
   }
