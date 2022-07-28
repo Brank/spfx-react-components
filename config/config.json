@@ -17,11 +17,20 @@
           "manifest": "./src/webparts/imagePicker/ImagePickerWebPart.manifest.json"
         }
       ]
+    },
+    "shared-calendar-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/sharedCalendar/SharedCalendarWebPart.js",
+          "manifest": "./src/webparts/sharedCalendar/SharedCalendarWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
   "localizedResources": {
     "HelloWorldWebPartStrings": "lib/webparts/helloWorld/loc/{locale}.js",
-    "ImagePickerWebPartStrings": "lib/webparts/imagePicker/loc/{locale}.js"
+    "ImagePickerWebPartStrings": "lib/webparts/imagePicker/loc/{locale}.js",
+    "SharedCalendarWebPartStrings": "lib/webparts/sharedCalendar/loc/{locale}.js"
   }
 }
