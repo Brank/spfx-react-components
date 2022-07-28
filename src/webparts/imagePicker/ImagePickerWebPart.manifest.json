@@ -22,7 +22,8 @@
     "description": { "default": "imagePicker description" },
     "officeFabricIconFontName": "Page",
     "properties": {
-      "description": "imagePicker"
+      "description": "imagePicker",
+      "listName": ""
     }
   }]
 }

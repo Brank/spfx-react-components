@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Panel } from 'office-ui-fabric-react/lib/Panel';
-import { spfi, SPFx } from "@pnp/sp";
+import { SPFI, spfi, SPFx } from "@pnp/sp";
 import "@pnp/sp/webs";
 import "@pnp/sp/lists";
 import "@pnp/sp/items";
@@ -25,9 +25,9 @@ interface IImagePickerState {
 
 
 export default class ImagePicker extends React.Component<IImagePickerProps, IImagePickerState> {
-    sp = spfi().using(SPFx(this.props.context));
+    private _sp : SPFI = spfi().using(SPFx(this.props.context));
 
-    constructor(props: IImagePickerProps) {
+    public constructor(props: IImagePickerProps) {
         super(props);
         this.state = {
             isOpen: false,
@@ -40,22 +40,25 @@ export default class ImagePicker extends React.Component<IImagePickerProps, IIma
     }
 
     /*SHAREPOINT METHODS*/
-    private getImagesFromLibrary = () => {
-        this.sp.web.lists.getByTitle(this.props.sharepointLibrary).items.select("FileRef")()
+    private _getImagesFromLibrary = () : void => {
+        this._sp.web.lists.getByTitle(this.props.sharepointLibrary).items.select("FileRef")()
             .then((images) => {
-                var imagesURL = [];
+                const imagesURL : any[] = [];
                 images.forEach(imageItem => {
                     imagesURL.push(imageItem.FileRef);
                 })
                 this.setState({ imagesToDisplay: imagesURL, loading: false });
+            })
+            .catch(()=>{
+                console.error("Error in _getImagesFromLibrary");
             });
     }
 
     /*PANEL METHODS*/
-    private openPanel = () => {
+    private _openPanel = () :void => {
         this.setState({ isOpen: true, loading: true }, () => {
-            if (this.props.sharepointLibrary != "") {
-                this.getImagesFromLibrary();
+            if (this.props.sharepointLibrary !== "") {
+                this._getImagesFromLibrary();
             }
             else {
                 this.setState({ loading: false });
@@ -63,12 +66,12 @@ export default class ImagePicker extends React.Component<IImagePickerProps, IIma
         });
     }
 
-    private dismissPanel = () => {
+    private _dismissPanel = () : void => {
         this.setState({ isOpen: false });
     }
 
     /*CLICK HANDLER*/
-    private selectImage = (e) => {
+    private _selectImage = (e) : void => {
         e.preventDefault();
         this.setState({ imageSelected: e.target.src, isOpen: false });
     }
@@ -76,28 +79,28 @@ export default class ImagePicker extends React.Component<IImagePickerProps, IIma
     public render(): React.ReactElement<any> {
         return (
             <div>
-                <DefaultButton text={this.props.buttonText} onClick={this.openPanel} />
+                <DefaultButton text={this.props.buttonText} onClick={this._openPanel} />
                 <Panel
                     headerText={this.props.panelHeaderText}
                     isOpen={this.state.isOpen}
-                    onDismiss={this.dismissPanel}
+                    onDismiss={this._dismissPanel}
                     // You MUST provide this prop! Otherwise screen readers will just say "button" with no label.
                     closeButtonAriaLabel="Close"
                 >
                     {this.state.loading ? <Spinner size={SpinnerSize.large} /> :
                         <ul>
-                            {this.state.imagesToDisplay.map((image) => {
-                                return (<li>
-                                    <img width="200px" onClick={this.selectImage} src={image} />
+                            {this.state.imagesToDisplay.map((image, index) => {
+                                return (<li key={index}>
+                                    <img width="200px" onClick={this._selectImage} src={image} />
                                 </li>)
                             })}
                         </ul>}
                 </Panel>
-                {this.state.imageSelected === "" ? <div></div> :
+                {this.state.imageSelected === "" ? <div /> :
                     <div>
                         <span>{this.props.selectedText}</span>
                         <div>
-                            <img width="200px" src={this.state.imageSelected}></img>
+                            <img width="200px" src={this.state.imageSelected} />
                         </div>
                     </div>}
             </div>

@@ -1,19 +1,18 @@
 import * as React from 'react';
 import styles from './ImagePicker.module.scss';
 import { IImagePickerProps } from './IImagePickerProps';
-import { escape } from '@microsoft/sp-lodash-subset';
 import ImagePicker2 from './ImagePicker/ImagePicker';
 
 export default class ImagePicker extends React.Component<IImagePickerProps, {}> {
   public render(): React.ReactElement<IImagePickerProps> {
-    const {
+    /*const {
       description,
       isDarkTheme,
       environmentMessage,
       hasTeamsContext,
       userDisplayName,
       context
-    } = this.props;
+    } = this.props;*/
 
     return (
       <div className={ styles.imagePicker }>

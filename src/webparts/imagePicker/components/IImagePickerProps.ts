@@ -5,4 +5,5 @@ export interface IImagePickerProps {
   hasTeamsContext: boolean;
   userDisplayName: string;
   context: any;
+  listName: string;
 }

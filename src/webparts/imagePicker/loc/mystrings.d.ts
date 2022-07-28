@@ -6,6 +6,7 @@ declare interface IImagePickerWebPartStrings {
   AppLocalEnvironmentTeams: string;
   AppSharePointEnvironment: string;
   AppTeamsTabEnvironment: string;
+  ListFieldLabel: string;
 }
 
 declare module 'ImagePickerWebPartStrings' {
