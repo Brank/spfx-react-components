@@ -4,7 +4,7 @@ import {
   IPropertyPaneField,
   PropertyPaneFieldType
 } from '@microsoft/sp-property-pane';
-import { IDropdownOption } from 'office-ui-fabric-react/lib/components/Dropdown';
+import { IDropdownOption } from '@fluentui/react/lib/Dropdown';
 import { IPropertyPaneAsyncDropdownProps } from './IPropertyPaneAsyncDropdownProps';
 import { IPropertyPaneAsyncDropdownInternalProps } from './IPropertyPaneAsyncDropdownInternalProps';
 import AsyncDropdown from './components/AsyncDropdown';
@@ -59,7 +59,7 @@ export class PropertyPaneAsyncDropdown implements IPropertyPaneField<IPropertyPa
     ReactDom.render(element, elem);
   }
 
-  private _onChanged(option: IDropdownOption, index?: number): void {
+  private _onChanged(option: IDropdownOption<any>, index?: number): void {
     this.properties.onPropertyChange(this.targetProperty, option.key);
   }
 }

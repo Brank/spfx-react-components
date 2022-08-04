@@ -12,7 +12,7 @@ import * as strings from 'SharedCalendarWebPartStrings';
 import SharedCalendar from './components/SharedCalendar';
 import { ISharedCalendarProps } from './components/ISharedCalendarProps';
 import { PropertyPaneAsyncDropdown } from '../../controls/PropertyPaneAsyncDropdown/PropertyPaneAsyncDropdown';
-import { IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
+import { IDropdownOption } from '@fluentui/react/lib/Dropdown';
 import { SPFI, spfi, SPFx } from "@pnp/sp";
 import "@pnp/sp/webs";
 import  { ILists } from "@pnp/sp/lists";

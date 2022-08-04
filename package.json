@@ -9,6 +9,7 @@
     "test": "gulp test"
   },
   "dependencies": {
+    "@fluentui/react": "^8.86.3",
     "@fullcalendar/daygrid": "^5.11.2",
     "@fullcalendar/interaction": "^5.11.2",
     "@fullcalendar/react": "^5.11.2",
@@ -19,6 +20,7 @@
     "@microsoft/sp-webpart-base": "1.15.0",
     "@pnp/graph": "^3.4.1",
     "@pnp/sp": "^3.4.1",
+    "@pnp/spfx-controls-react": "3.9.0",
     "office-ui-fabric-react": "7.185.7",
     "react": "16.13.1",
     "react-dom": "16.13.1",

@@ -32,3 +32,11 @@
     }
   }
 }
+
+.dialogContainer {
+  max-width: 640px !important;
+
+  [class*="ms-Dialog-button--close"] {
+      position: absolute !important;
+  }
+}

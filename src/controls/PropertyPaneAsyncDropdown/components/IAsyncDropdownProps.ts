@@ -1,9 +1,9 @@
-import { IDropdownOption } from 'office-ui-fabric-react/lib/components/Dropdown';
+import { IDropdownOption } from '@fluentui/react/lib/Dropdown';
 
 export interface IAsyncDropdownProps {
   label: string;
   loadOptions: () => Promise<IDropdownOption[]>;
-  onChanged: (option: IDropdownOption, index?: number) => void;
+  onChanged: (option: IDropdownOption<any>, index?: number) => void;
   selectedKey: string | number;
   disabled: boolean;
   stateKey: string;

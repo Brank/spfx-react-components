@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ColorPicker, IColorPickerStyles } from 'office-ui-fabric-react/lib/components/ColorPicker';
+import { ColorPicker, IColorPickerStyles } from '@fluentui/react/lib/ColorPicker';
 import { IColorPickerProps } from './IColorPickerProps';
 import { IColorPickerState } from './IColorPickerState';
 import { getColorFromString, IColor } from 'office-ui-fabric-react';

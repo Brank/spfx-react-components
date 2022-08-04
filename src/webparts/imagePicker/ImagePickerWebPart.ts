@@ -19,7 +19,7 @@ import "@pnp/sp/items";
 import "@pnp/sp/lists/web";
 
 import { PropertyPaneAsyncDropdown } from '../../controls/PropertyPaneAsyncDropdown/PropertyPaneAsyncDropdown';
-import { IDropdownOption } from 'office-ui-fabric-react/lib/components/Dropdown';
+import { IDropdownOption } from '@fluentui/react/lib/Dropdown';
 import { update } from '@microsoft/sp-lodash-subset';
 
 export interface IImagePickerWebPartProps {

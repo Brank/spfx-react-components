@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/components/Dropdown';
-import { Spinner } from 'office-ui-fabric-react/lib/components/Spinner';
+
+import { Dropdown, IDropdownOption } from '@fluentui/react/lib/Dropdown';
+import { Spinner } from '@fluentui/react/lib/Spinner';
 import { IAsyncDropdownProps } from './IAsyncDropdownProps';
 import { IAsyncDropdownState } from './IAsyncDropdownState';
 
@@ -37,7 +38,7 @@ export default class AsyncDropdown extends React.Component<IAsyncDropdownProps, 
     });
 
     this.props.loadOptions()
-      .then((options: IDropdownOption[]): void => {
+      .then((options: IDropdownOption<any>[]): void => {
         this.setState({
           loading: false,
           error: undefined,
@@ -69,7 +70,7 @@ export default class AsyncDropdown extends React.Component<IAsyncDropdownProps, 
     );
   }
 
-  private _onChanged = (option: IDropdownOption, index?: number): void => {
+  private _onChanged = (option: IDropdownOption<any>, index?: number): void => {
     this._selectedKey = option.key;
     // reset previously selected options
     const options: IDropdownOption[] = this.state.options;

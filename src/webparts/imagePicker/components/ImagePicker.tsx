@@ -19,7 +19,7 @@ export default class ImagePicker extends React.Component<IImagePickerProps, {}> 
         <ImagePicker2 buttonText="Click to select an Image"
          panelHeaderText="Select an Image" 
          selectedText="You have selected: "
-         sharepointLibrary="Imagenes"
+         sharepointLibrary={this.props.listName}
          context={this.props.context}
          />
       </div>

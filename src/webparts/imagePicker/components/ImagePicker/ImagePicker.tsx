@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { Panel } from 'office-ui-fabric-react/lib/Panel';
+import { Spinner, SpinnerSize } from '@fluentui/react/lib/Spinner';
+import { DefaultButton } from '@fluentui/react/lib/Button';
+import { Panel } from '@fluentui/react/lib/Panel';
 import { SPFI, spfi, SPFx } from "@pnp/sp";
 import "@pnp/sp/webs";
 import "@pnp/sp/lists";
@@ -41,7 +41,7 @@ export default class ImagePicker extends React.Component<IImagePickerProps, IIma
 
     /*SHAREPOINT METHODS*/
     private _getImagesFromLibrary = () : void => {
-        this._sp.web.lists.getByTitle(this.props.sharepointLibrary).items.select("FileRef")()
+        this._sp.web.lists.getById(this.props.sharepointLibrary).items.select("FileRef")()
             .then((images) => {
                 const imagesURL : any[] = [];
                 images.forEach(imageItem => {

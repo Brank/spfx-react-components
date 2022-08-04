@@ -1,4 +1,4 @@
-import { IColor } from "office-ui-fabric-react";
+import { IColor } from "@fluentui/react";
 
 export interface IColorPickerState {
   loading: boolean;
