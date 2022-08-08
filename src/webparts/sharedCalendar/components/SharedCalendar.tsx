@@ -25,7 +25,14 @@ const eventColors : string[] = [
  "rgb(135, 100, 184)"
 ]//10 different colors for default
 
-export default class SharedCalendar extends React.Component<ISharedCalendarProps, {}> {
+interface ISharedCalendarState {
+  events: any[];
+  showEvent: boolean;
+  displayFormURL: string;
+  eventToDisplayID: string;
+}
+
+export default class SharedCalendar extends React.Component<ISharedCalendarProps, ISharedCalendarState> {
   public state : any;
 
   public constructor(props : ISharedCalendarProps)

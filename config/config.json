@@ -25,6 +25,14 @@
           "manifest": "./src/webparts/sharedCalendar/SharedCalendarWebPart.manifest.json"
         }
       ]
+    },
+    "persona-carrousel-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/personaCarrousel/PersonaCarrouselWebPart.js",
+          "manifest": "./src/webparts/personaCarrousel/PersonaCarrouselWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
@@ -32,6 +40,7 @@
     "HelloWorldWebPartStrings": "lib/webparts/helloWorld/loc/{locale}.js",
     "ImagePickerWebPartStrings": "lib/webparts/imagePicker/loc/{locale}.js",
     "SharedCalendarWebPartStrings": "lib/webparts/sharedCalendar/loc/{locale}.js",
-    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js",
+    "PersonaCarrouselWebPartStrings": "lib/webparts/personaCarrousel/loc/{locale}.js"
   }
 }

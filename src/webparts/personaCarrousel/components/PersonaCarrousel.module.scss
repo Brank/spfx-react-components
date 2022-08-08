@@ -1,0 +1,125 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+
+.personaCarrousel {
+  overflow: hidden;
+  padding: 1em;
+  color: "[theme:bodyText, default: #323130]";
+  color: var(--bodyText);
+
+  &.teams {
+    font-family: $ms-font-family-fallbacks;
+  }
+}
+
+.welcome {
+  text-align: center;
+}
+
+.welcomeImage {
+  width: 100%;
+  max-width: 420px;
+}
+
+.links {
+  a {
+    text-decoration: none;
+    color: "[theme:link, default:#03787c]";
+    color: var(--link); // note: CSS Custom Properties support is limited to modern browsers only
+
+    &:hover {
+      text-decoration: underline;
+      color: "[theme:linkHovered, default: #014446]";
+      color: var(--linkHovered); // note: CSS Custom Properties support is limited to modern browsers only
+    }
+  }
+}
+
+.section {
+  background: #ffffff;
+  padding: 28px;
+  margin-bottom: 28px;
+  border-radius: 2px;
+  background-clip: padding-box;
+  -webkit-box-shadow: 0 1.6px 3.6px 0 rgb(0 0 0 / 13%), 0 0.3px 0.9px 0 rgb(0 0 0 / 11%);
+  box-shadow: 0 1.6px 3.6px 0 rgb(0 0 0 / 13%), 0 0.3px 0.9px 0 rgb(0 0 0 / 11%);
+  position: relative;
+  opacity: 1;
+  -webkit-transform: translate3d(0, 48px, 0);
+  transform: translate3d(0, 48px, 0);
+  -webkit-transition: opacity .3s cubic-bezier(.1, .9, .2, 1) 50ms, -webkit-transform .3s cubic-bezier(.1, .9, .2, 1);
+  transition: opacity .3s cubic-bezier(.1, .9, .2, 1) 50ms, -webkit-transform .3s cubic-bezier(.1, .9, .2, 1);
+  transition: transform .3s cubic-bezier(.1, .9, .2, 1), opacity .3s cubic-bezier(.1, .9, .2, 1) 50ms;
+  transition: transform .3s cubic-bezier(.1, .9, .2, 1), opacity .3s cubic-bezier(.1, .9, .2, 1) 50ms, -webkit-transform .3s cubic-bezier(.1, .9, .2, 1);
+  //margin-left: 40px;
+  //margin-right: 40px;
+  //width: 439.392px;
+  //max-width: 286px;
+  height: 436px;
+  padding: 0 16px;
+  box-sizing: border-box;
+  display:flex;
+  flex-direction: column;
+  //border: 1px solid black;
+}
+
+/*.userImageContainer {
+  align-self: center;
+  margin: auto;
+  width:100px;
+  height: 100px;
+  font-family: "Segoe UI", "Segoe UI Web (West European)", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  font-weight: 400;
+  overflow: hidden;
+  position: absolute;
+  //margin-right: 10px;
+  top: 0px;
+  left: 0px;
+  width: 100px;
+  height: 100px;
+  border: 0px;
+  border-radius: 50%;
+  perspective: 1px;
+}*/
+
+.userImageContainer {
+  align-self: center;
+  margin-bottom: 50px;
+  margin-top: 10px;
+}
+
+.userImageContainer2 {
+  position: relative;
+  text-align: center;
+  flex: 0 0 auto;
+  height: 100px;
+  width: 100px;
+}
+
+.userImageContainer3 {
+  overflow: hidden;
+  position: absolute;
+  margin-right: 10px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+
+.userImage {
+  display: block;
+  opacity: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.userName {
+  font-size: 20px;
+  font-style: bold;
+}
